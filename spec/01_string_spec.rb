@@ -39,18 +39,25 @@ end
 
 describe String do
   # Create a let variable that will pass the first test.
-
+  let(:favorite_food) { String.new('tacos') }
   # remove the 'x' before running this test
-  xit 'is equal to tacos' do
+  it 'is equal to tacos' do
     expect(favorite_food).to eq('tacos')
   end
 
   # remove the 'x' before running this test
   context 'when favorite food is updated' do
     # Change the favorite_food let variable.
-
-    xit 'updates the favorite food' do
+    let(:favorite_food) { String.new('ramen') }
+    it 'updates the favorite food' do
       # Write a test that will pass.
+      expect(favorite_food).to eq('ramen')
+    end
+  end
+
+  context 'when overrided favorite food is out of scope' do
+    it 'does not preserve the overriden value' do
+      expect(favorite_food).not_to eq('ramen')
     end
   end
 end
